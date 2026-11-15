@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Live</title>
-    
+
     <link rel="icon" type="image/png" sizes="512x512" href="https://img.icons8.com/fluency/512/play.png">
     <link rel="apple-touch-icon" sizes="512x512" href="https://img.icons8.com/fluency/512/play.png">
     <meta name="apple-mobile-web-app-title" content="Sports Live">
 
     <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css">
 
@@ -27,10 +27,10 @@
             width: 320px; background: #181818;
             border-left: 1px solid #333; display: flex; flex-direction: column; z-index: 10;
         }
-        
+
         .search-box { padding: 15px; background: #222; border-bottom: 1px solid #333; }
         .search-container { display: flex; gap: 10px; align-items: center; }
-        
+
         .home-btn {
             background: #111; border: 1px solid #444; border-radius: 6px; padding: 10px;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -48,22 +48,13 @@
         .channel-list::-webkit-scrollbar { width: 6px; }
         .channel-list::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
 
-       /* تنسيق عناوين أقسام القنوات */
+        /* تنسيق عناوين أقسام القنوات */
         .category-header {
-            background: #111;
-            color: #fff;
-            padding: 12px;
-            margin: 20px 0 10px 0;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid #555;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            background: #111; color: #fff; padding: 12px; margin: 20px 0 10px 0;
+            border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;
+            border: 1px solid #555; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
         }
-        .category-header:first-child {
-            margin-top: 0;
-        }
+        .category-header:first-child { margin-top: 0; }
 
         .channel-btn {
             background: #222; padding: 12px 15px; margin-bottom: 5px; border-radius: 6px;
@@ -74,7 +65,7 @@
         .channel-btn.active { background: #1dcf60; color: #fff; }
         .player-wrapper { flex: 1; position: relative; background: #000; }
         #player { position: absolute !important; top: 0; right: 0; bottom: 0; left: 0; width: 100% !important; height: 100% !important; }
-        
+
         #home-screen {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
@@ -87,7 +78,7 @@
             text-shadow: 0px 4px 15px rgba(29, 207, 96, 0.3);
         }
         #home-screen p { font-size: 1.2rem; color: #ccc; margin-top: 15px; }
-        
+
         @media (max-width: 768px) {
             .app-container { flex-direction: column; }
             .player-wrapper { height: 40vh; flex: none; }
@@ -95,17 +86,43 @@
             #home-screen h1 { font-size: 2.5rem; }
         }
 
-        /* إضافة أيقونة الشاشة الكاملة الاحترافية */
+        /* أيقونة الشاشة الكاملة */
         .jw-icon-fullscreen svg { display: none !important; }
         .jw-icon-fullscreen {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTggM0g1YTIgMiAwIDAgMC0yIDJ2M20xOCAwVjVhMiAyIDAgMCAwLTItMmgtM20wIDE4aDNhMiAyIDAgMCAwIDItMnYtM00zIDE2djNhMiAyIDAgMCAwIDIgMmgzIj48L3BhdGg+PC9zdmc+');
-            background-size: 16px;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-size: 16px; background-position: center; background-repeat: no-repeat;
         }
-        /* تغيير شكل الأيقونة عند الدخول في وضع الشاشة الكاملة (العكسي) */
         .jw-flag-fullscreen .jw-icon-fullscreen {
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTggM3YzYTIgMiAwIDAgMS0yIDJIM20xOCAwaC0zYTIgMiAwIDAgMS0yLTJWM20wIDE4di0zYTIgMiAwIDAgMSAyLTJoM00zIDE2aDNhMiAyIDAgMCAxIDIgMnYzIj48L3BhdGg+PC9zdmc+');
+        }
+
+        /* ===== أزرار السيرفرات فوق شمال البلاير ===== */
+        .server-bar {
+            position: absolute; top: 14px; left: 14px; z-index: 50;
+            display: flex; gap: 8px; direction: ltr;
+            transition: opacity .35s ease, transform .35s ease;
+        }
+        .server-btn {
+            display: flex; align-items: center; gap: 6px;
+            padding: 6px 12px; border-radius: 20px;
+            background: rgba(20, 20, 20, 0.65);
+            -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #ddd; font-size: 12px; font-weight: 600; letter-spacing: .3px;
+            cursor: pointer; font-family: inherit; transition: all .2s ease;
+        }
+        .server-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+        .server-btn:hover { background: rgba(60, 60, 60, 0.85); color: #fff; border-color: rgba(255,255,255,.4); }
+        .server-btn.active {
+            background: #1dcf60; border-color: #1dcf60; color: #fff;
+            box-shadow: 0 2px 10px rgba(29, 207, 96, 0.45);
+        }
+        .jwplayer.jw-flag-user-inactive:not(.jw-state-paused) .server-bar {
+            opacity: 0; transform: translateY(-6px); pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .server-bar { top: 8px; left: 8px; gap: 5px; }
+            .server-btn { padding: 4px 9px; font-size: 11px; }
         }
     </style>
 </head>
@@ -357,8 +374,8 @@
             { name: "Barca TV ES", url: "https://amg17560-fcb-amg17560c2-rakuten-es-4889.playouts.now.amagi.tv/playlist/amg17560-fcbarcelona-topbarcaspanish-rakutenes/playlist.m3u8?ads_amagi_channel_id=941&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB17&ads_content_genre=sports&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.122.168&ads_market=es&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=top-barca-es_es&ads_rtv_content_id=6347&ads_rtv_content_language=es&ads_rtvid=271859&ads_streaming_id=e00bea56-e946-472c-88d0-12c9ec8f7e98&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor" },
             { name: "Barca TV EN", url: "https://amg17560-fcb-amg17560c1-rakuten-uk-4891.playouts.now.amagi.tv/playlist/amg17560-fcbarcelona-topbarcaenglish-rakutenuk/playlist.m3u8" },
             { name: "MU TV", url: "https://fastly.live.brightcove.com/6374054671112/eu-west-1/6058004203001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiYXplMnp5LmVncmVzcy55ODN1ZWIiLCJhY2NvdW50X2lkIjoiNjA1ODAwNDIwMzAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MDU4MDA0MjAzMDAxIl0sImp0aSI6IjYzNzQwNTQ2NzExMTIifQ.3FmuTna3DAmY7xlhK5fk6LMrosrtrR5VsU2QOgYO5y4/playlist-hls.m3u8" },
-            { name: "Inter TV (s1)", url: "https://amg27604-amg27604c1-amgplt0165.playout.now3.amagi.tv/playlist/amg27604-amg27604c1-amgplt0165/playlist.m3u8" },
-            { name: "INTER 24/7 Inter TV (s2)", url: "https://amg27604-amg27604c1-amgplt0165.playout.now3.amagi.tv/playlist/amg27604-amg27604c1-amgplt0165/playlist.m3u8?ads_amagi_channel_id=1044&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB17&ads_content_genre=sports&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.122.168&ads_market=es&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=inter-24-7-eng_es&ads_rtv_content_id=7073&ads_rtv_content_language=en&ads_rtvid=271859&ads_streaming_id=870f93da-0eeb-440d-8e06-678bdf28ea5d&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor" },
+            { name: "Inter TV", url: "https://amg27604-amg27604c1-amgplt0165.playout.now3.amagi.tv/playlist/amg27604-amg27604c1-amgplt0165/playlist.m3u8" },
+            { name: "Inter TV (s2)", url: "https://amg27604-amg27604c1-amgplt0165.playout.now3.amagi.tv/playlist/amg27604-amg27604c1-amgplt0165/playlist.m3u8?ads_amagi_channel_id=1044&ads_amznbrmid=&ads_amznregion=&ads_amznslots=&ads_app_bundle=&ads_app_store_url=rakuten.tv&ads_app_version=&ads_brand_name=&ads_content_categories=IAB17&ads_content_genre=sports&ads_content_livestream=0&ads_device_lmt=1&ads_device_make=&ads_device_model=&ads_device_type=web&ads_device_year=&ads_env=prod&ads_extra_eids=&ads_gam_correlator=&ads_gdpr_consent=&ads_google_ad_manager_nonce=&ads_ifa_type=&ads_inv_partner_domain=rakuten.tv&ads_ip=162.158.122.168&ads_market=es&ads_network_name=RakutenTV&ads_os_language=&ads_placement=1&ads_player_height=&ads_player_width=&ads_pod_type=playerpage_midroll&ads_ppid=&ads_prodq=1&ads_rating=0&ads_rtv_channel_name=inter-24-7-eng_es&ads_rtv_content_id=7073&ads_rtv_content_language=en&ads_rtvid=271859&ads_streaming_id=870f93da-0eeb-440d-8e06-678bdf28ea5d&ads_tivo_devcountry=&ads_tivo_devmakedate=&ads_tivo_mvpd=&ads_tivo_platform=&ads_tivo_usid=&ads_tivo_uxloc=&ads_user_type=visitor" },
             { name: "Inter TV (s3)", url: "https://amg27604-amg27604c1-amgplt0032.playout.now3.amagi.tv/playlist/amg27604-amg27604c1-amgplt0032/playlist.m3u8?ads.devicemodel=[DEVICE_MODEL]&ads.donotsell=[DNS]&ads.ip=[IP]&ads.usprivacy=[US_PRIVACY]&ads.channel_name=[CHANNEL_NAME]&ads.gdpr=[GDPR]&ads.deviceid=[DEVICE_ID]&ads.gpp_sid=[GPP_SID]&ads.idtype=[IDTYPE]&ads.appversion=[APP_VERSION]&ads.coppa=[COPPA]&ads.fck=[FCK]&ads.appname=[APP_NAME]&ads.devicemake=[DEVICE_MAKE]&ads.gdprconsent=[GDPR_CONSENT]&ads.ic=[IC]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lmt=[LMT]&ads.bundleid=[APP_BUNDLE]&ads.devicetype=[DEVICE_TYPE]&ads.gpp=[GPP]&ads.network_name=[NETWORK_NAME]&ads.appstoreurl=[APP_STOREURL]&ads.inv_partner_domain=[INV_PARTNER_DOMAIN]&ads.schain=[SCHAIN]&ads.targetad=[TARGETAD_ALLOWED]&ads.viewsize=[VIEWSIZE]&ads.content_livestream=[CONTENT_LIVESTREAM]&ads.country=[COUNTRY]&ads.givn=[NONCE]&ads.iu=[IU]&ads.lat=[LMT]&ads.prodq=[PRODQ]&ads.url=[URL]" },
             { name: "Inter TV (s4)(VPN)", url: "https://epg.provider.plex.tv/library/parts/6a1610bebdf296985fd95603-69011e71d320237a5a2d9f63.m3u8?X-Plex-Token=od2DuoHEzKww-mpyeeUx" },
             { name: "UEFA.tv", url: "https://live-manifest.production-public.tubi.io/live/d846008d-b608-4ddf-931c-48e9b60bf6c5/playlist.m3u8" },
@@ -413,7 +430,7 @@
             { name: "TV 1 ES (s2)", url: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=17299&avod=1&coppa=0&td=6&is_lat=[LMT]&dnt=[DNS]&us_privacy=[US_PRIVACY]&did=[DEVICE_ID]&ip=[IP]&ua=[UA]&ifa_type=[IFA_TYPE]&app_bundle=[APP_BUNDLE]&app_store_url=[APP_STOREURL]&app_name=[APP_NAME]&custom_targeting=html5&custom_4=lg_channels_sp&player_height=720&player_width=1280&content_channel=lg_channels&content_dist_name=lg_channels&device_make=[DEVICE_MAKE]&device_model=[DEVICE_MODEL]&device_os=html5&consent=[GDPR_CONSENT]&gdpr=[GDPR]&gender=not_specified&yob=0&livestream=1&custom_param_0=[DEVICE_MODEL]&custom_param_1=tv&custom_param_2=[DEVICE_MAKE]&custom_param_3=[DEVICE_ID]&custom_param_4=lg_channels&custom_param_5=html5&fck=[FCK]&viewsize=[VIEWSIZE]&nonce=[NONCE]&keep_scte=1&preroll_duration=30&preroll=1" },
             { name: "TV 2 ES", url: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=15618&avod=1&coppa=0&td=6&is_lat=[LMT]&dnt=[DNS]&us_privacy=[US_PRIVACY]&did=[DEVICE_ID]&ip=[IP]&ua=[UA]&ifa_type=[IFA_TYPE]&app_bundle=[APP_BUNDLE]&app_store_url=[APP_STOREURL]&app_name=[APP_NAME]&custom_targeting=html5&custom_4=lg_channels_sp&player_height=720&player_width=1280&content_channel=lg_channels&content_dist_name=lg_channels&device_make=[DEVICE_MAKE]&device_model=[DEVICE_MODEL]&device_os=html5&consent=[GDPR_CONSENT]&gdpr=[GDPR]&gender=not_specified&yob=0&livestream=1&custom_param_0=[DEVICE_MODEL]&custom_param_1=tv&custom_param_2=[DEVICE_MAKE]&custom_param_3=[DEVICE_ID]&custom_param_4=lg_channels&custom_param_5=html5&fck=[FCK]&viewsize=[VIEWSIZE]&nonce=[NONCE]&keep_scte=1&preroll_duration=30&preroll=1" },
             { name: "TV3 CAT (vpn)", url: "https://directes3-tv-es.3catdirectes.cat/live-content/tvc-hls/master.m3u8" },
-            { name: "Channel 4 EN", url: "https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(4s)/manifest.mpd", k1: "0000000000000000000000000034730a", k2: "19bfb83e0e0f40f6eef4eccedbfa7bb8" },
+            { name: "4seven EN", url: "https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(4s)/manifest.mpd", k1: "0000000000000000000000000034730a", k2: "19bfb83e0e0f40f6eef4eccedbfa7bb8" },
             { name: "Channel 4 EN", url: "https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(c4)/manifest.mpd", k1: "0000000000000000000000000063340a", k2: "5ce85f1aa5771900b952f0ba58857d7a" },
             { name: "E4 EN", url: "https://olsp.live.dash.c4assets.com/dash_iso_sp_tl/live/channel(e4)/manifest.mpd", k1: "0000000000000000000000000065340a", k2: "88a5d26b2dc54896693dea815df7c592" },
             { name: "ITALIA 1 It", url: "https://live03p-seg.msf.cdn.mediaset.net/live/ch-i1/i1-dash-widevine.isml/manifest.mpd", k1: "00f9f3c0783536b8ee91704e23b78016", k2: "bfd04d6f544c9cc4d35cb13ab6778587" },
@@ -445,39 +462,79 @@
         ];
 
         var playerInstance = null;
+        var groups = [];
+        var currentGroup = -1;
+        var currentServer = 0;
+
+        // شطب علامات السيرفر من الاسم: (s1) (s2) (sn1) (VPN) (DVR)
+        function cleanName(n) {
+            return n.replace(/\s*\((?:s\d+|sn\d+|vpn|dvr)\)/gi, "").replace(/\s+/g, " ").trim();
+        }
+
+        // تجميع القنوات المتشابهة داخل نفس القسم
+        function buildGroups() {
+            groups = [];
+            var map = {};
+            var section = 0;
+            for (var i = 0; i < channels.length; i++) {
+                var ch = channels[i];
+                if (ch.header) {
+                    section++;
+                    groups.push({ header: ch.header });
+                    continue;
+                }
+                var key = section + "|" + cleanName(ch.name).toLowerCase();
+                if (map[key] !== undefined) {
+                    groups[map[key]].servers.push(ch);
+                } else {
+                    groups.push({ servers: [ch] });
+                    map[key] = groups.length - 1;
+                }
+            }
+            for (var g = 0; g < groups.length; g++) {
+                var gr = groups[g];
+                if (gr.header) continue;
+                gr.name = gr.servers.length > 1 ? cleanName(gr.servers[0].name) : gr.servers[0].name.trim();
+            }
+        }
+
+        function groupMatches(gr, text) {
+            text = text.toLowerCase();
+            for (var k = 0; k < gr.servers.length; k++) {
+                if (gr.servers[k].name.toLowerCase().indexOf(text) !== -1) return true;
+            }
+            return false;
+        }
 
         function renderChannels(filterText) {
             if (!filterText) filterText = "";
             var listContainer = document.getElementById("channelList");
             listContainer.innerHTML = "";
 
-            for (var i = 0; i < channels.length; i++) {
-                var channel = channels[i];
-                
-                // إضافة عرض الفواصل (العناوين)
-                if (channel.header) {
-                    // إذا كان يبحث، نقوم بإخفاء العناوين لنظهر القنوات فقط
+            for (var i = 0; i < groups.length; i++) {
+                var gr = groups[i];
+
+                if (gr.header) {
                     if (filterText === "") {
                         var headerDiv = document.createElement("div");
                         headerDiv.className = "category-header";
-                        headerDiv.innerText = channel.header;
+                        headerDiv.innerText = gr.header;
                         listContainer.appendChild(headerDiv);
                     }
                     continue;
                 }
 
-                if (channel.name.toLowerCase().indexOf(filterText.toLowerCase()) !== -1) {
-
+                if (filterText === "" || groupMatches(gr, filterText)) {
                     var btn = document.createElement("div");
-                    btn.className = "channel-btn";
+                    btn.className = "channel-btn" + (i === currentGroup ? " active" : "");
                     btn.id = "btn-" + i;
-                    var typeBadge = channel.url ? (channel.url.indexOf(".m3u8") !== -1 ? "HLS" : "DASH") : "";
+                    var typeBadge = gr.servers[0].url.indexOf(".m3u8") !== -1 ? "HLS" : "DASH";
 
-                    btn.innerHTML = '<span>' + channel.name + '</span>' +
+                    btn.innerHTML = '<span>' + gr.name + '</span>' +
                                     '<span style="font-size: 10px; color: #aaa; background: #333; padding: 2px 6px; border-radius: 4px;">' + typeBadge + '</span>';
-                    
+
                     (function(index) {
-                        btn.onclick = function() { playChannel(index); };
+                        btn.onclick = function() { playGroup(index, 0); };
                     })(i);
                     listContainer.appendChild(btn);
                 }
@@ -486,25 +543,66 @@
 
         function goHome() {
             document.getElementById("home-screen").style.display = "flex";
-            
+
             if (playerInstance) {
-                playerInstance.remove(); 
+                playerInstance.remove();
                 playerInstance = null;
             }
+            currentGroup = -1;
+            currentServer = 0;
 
             var allBtns = document.querySelectorAll(".channel-btn");
             for (var j = 0; j < allBtns.length; j++) { allBtns[j].classList.remove("active"); }
         }
 
-        function playChannel(index) {
-            var channel = channels[index];
-            
+        // أزرار السيرفرات داخل حاوية البلاير (تشتغل في الشاشة الكاملة وتختفي مع أزرار التحكم)
+        function buildServerBar(gIndex, sIndex) {
+            var gr = groups[gIndex];
+            var container = playerInstance.getContainer();
+            var old = container.querySelectorAll(".server-bar");
+            for (var o = 0; o < old.length; o++) old[o].parentNode.removeChild(old[o]);
+
+            if (gr.servers.length < 2) return; // سيرفر واحد = مفيش أزرار
+
+            var bar = document.createElement("div");
+            bar.className = "server-bar";
+            var icon = '<svg viewBox="0 0 24 24"><path d="M4 4h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm0 9h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1zM6.5 8.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>';
+
+            for (var s = 0; s < gr.servers.length; s++) {
+                var b = document.createElement("button");
+                b.className = "server-btn" + (s === sIndex ? " active" : "");
+
+                // قراءة العلامات من اسم القناة: VPN / DVR
+                var nm = gr.servers[s].name;
+                var tags = [];
+                if (/\(\s*vpn\s*\)/i.test(nm)) tags.push("VPN");
+                if (/\(\s*dvr\s*\)/i.test(nm)) tags.push("DVR");
+                var label = "Server " + (s + 1) + (tags.length ? " (" + tags.join(", ") + ")" : "");
+
+                b.innerHTML = icon + '<span>' + label + '</span>';
+                (function(idx) {
+                    b.onclick = function(e) {
+                        e.stopPropagation();
+                        if (idx !== currentServer) playGroup(gIndex, idx);
+                    };
+                })(s);
+                bar.appendChild(b);
+            }
+            container.appendChild(bar);
+        }
+
+        function playGroup(gIndex, sIndex) {
+            var gr = groups[gIndex];
+            var channel = gr.servers[sIndex];
+            currentGroup = gIndex;
+            currentServer = sIndex;
+
             document.getElementById("home-screen").style.display = "none";
-            
+
             var allBtns = document.querySelectorAll(".channel-btn");
             for (var j = 0; j < allBtns.length; j++) { allBtns[j].classList.remove("active"); }
-            var activeBtn = document.getElementById("btn-" + index);
-            if(activeBtn) activeBtn.classList.add("active");
+            var activeBtn = document.getElementById("btn-" + gIndex);
+            if (activeBtn) activeBtn.classList.add("active");
 
             var setupConfig = {
                 file: channel.url,
@@ -524,11 +622,11 @@
                 var diagonalCutArrow = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQgMTBsNy03bS02IDBoNnY2bS0xMSA1bC03IDdtNiAwSDN2LTYiLz48L3N2Zz4=";
 
                 playerInstance.addButton(
-                    diagonalCutArrow, 
-                    "توسيع/تضييق الصورة", 
+                    diagonalCutArrow,
+                    "توسيع/تضييق الصورة",
                     function() {
                         if (!isStretched) {
-                            playerInstance.setConfig({ stretching: "exactfit" }); 
+                            playerInstance.setConfig({ stretching: "exactfit" });
                             isStretched = true;
                         } else {
                             playerInstance.setConfig({ stretching: "uniform" });
@@ -537,6 +635,8 @@
                     },
                     "stretch-button"
                 );
+
+                buildServerBar(gIndex, sIndex);
             });
         }
 
@@ -545,9 +645,9 @@
             renderChannels(text);
         }
 
+        buildGroups();
         renderChannels("");
-        goHome(); 
-
+        goHome();
     </script>
 </body>
 </html>
