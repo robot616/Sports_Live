@@ -466,9 +466,24 @@
         var currentGroup = -1;
         var currentServer = 0;
 
-        // شطب علامات السيرفر من الاسم: (s1) (s2) (sn1) (VPN) (DVR)
+        // شطب الأقواس اللي في آخر اسم القناة بعد مسافة: (VPN) (DVR) (أي حاجة) (s2)
+        // أي أقواس في نص الاسم أو ملزوقة فيه مش بتتشطب
+        var TRAIL_RE = /(?:\s+\([^()]*\))+\s*$/;
         function cleanName(n) {
-            return n.replace(/\s*\((?:s\d+|sn\d+|vpn|dvr)\)/gi, "").replace(/\s+/g, " ").trim();
+            return n.replace(TRAIL_RE, "").replace(/\s+/g, " ").trim();
+        }
+
+        // قراءة الأقواس اللي في آخر الاسم: isNum = علامة ترقيم (s2) مش بتظهر في الزرار
+        function getTags(n) {
+            var tags = [], tm = n.match(TRAIL_RE);
+            if (!tm) return tags;
+            var re = /\s+\(([^()]*)\)/g, m;
+            while ((m = re.exec(tm[0])) !== null) {
+                var t = m[1].trim();
+                if (!t) continue;
+                tags.push({ text: t, isNum: /^(s|sn)\d+$/i.test(t) });
+            }
+            return tags;
         }
 
         // تجميع القنوات المتشابهة داخل نفس القسم
@@ -494,7 +509,7 @@
             for (var g = 0; g < groups.length; g++) {
                 var gr = groups[g];
                 if (gr.header) continue;
-                gr.name = gr.servers.length > 1 ? cleanName(gr.servers[0].name) : gr.servers[0].name.trim();
+                gr.name = cleanName(gr.servers[0].name);
             }
         }
 
@@ -562,7 +577,9 @@
             var old = container.querySelectorAll(".server-bar");
             for (var o = 0; o < old.length; o++) old[o].parentNode.removeChild(old[o]);
 
-            if (gr.servers.length < 2) return; // سيرفر واحد = مفيش أزرار
+            // سيرفر واحد وبدون علامة (VPN/DVR/أي كلمة) = مفيش أزرار
+            var extra = getTags(gr.servers[0].name).filter(function(t) { return !t.isNum; }).length;
+            if (gr.servers.length < 2 && extra === 0) return;
 
             var bar = document.createElement("div");
             bar.className = "server-bar";
@@ -572,11 +589,13 @@
                 var b = document.createElement("button");
                 b.className = "server-btn" + (s === sIndex ? " active" : "");
 
-                // قراءة العلامات من اسم القناة: VPN / DVR
-                var nm = gr.servers[s].name;
+                // أي كلمة بين قوسين (غير (s2)) تظهر جنب اسم السيرفر
+                var all = getTags(gr.servers[s].name);
                 var tags = [];
-                if (/\(\s*vpn\s*\)/i.test(nm)) tags.push("VPN");
-                if (/\(\s*dvr\s*\)/i.test(nm)) tags.push("DVR");
+                for (var t = 0; t < all.length; t++) {
+                    if (all[t].isNum) continue;
+                    tags.push(/^(vpn|dvr)$/i.test(all[t].text) ? all[t].text.toUpperCase() : all[t].text);
+                }
                 var label = "Server " + (s + 1) + (tags.length ? " (" + tags.join(", ") + ")" : "");
 
                 b.innerHTML = icon + '<span>' + label + '</span>';
